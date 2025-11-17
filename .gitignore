@@ -1,0 +1,21 @@
+cd ~/desktop/2DV515/a1
+
+cat > .gitignore << "EOF"
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+
+# Java / Gradle
+backend/.gradle/
+backend/build/
+backend/out/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
