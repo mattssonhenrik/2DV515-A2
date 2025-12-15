@@ -5,35 +5,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hm222yj_2dv515.a1.backend.blogdatatomemory.BlogDataToMemory;
-import hm222yj_2dv515.a1.backend.fileprocessor.FileProcessor;
+import hm222yj_2dv515.a1.backend.clusterresponsedto.ClusterResponseDto;
+import hm222yj_2dv515.a1.backend.kmeansclusteringservice.KMeansClusteringService;
 
 /**
- * Exposes the raw blog dataset over HTTP.
+ * Exposes blog clustering results over HTTP.
  */
 @RestController
-@RequestMapping("/api/data")
+@RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:5173")
 public class BlogDataController {
 
-    private final FileProcessor fileProcessor;
+    KMeansClusteringService kMeansClusteringService;
 
     /**
      * Creates the controller with required dependencies.
      *
-     * @param fileProcessor reads the blog dataset from file
+     * @param kMeansClusteringService service that runs K-means clustering
      */
-    public BlogDataController(FileProcessor fileProcessor) {
-        this.fileProcessor = fileProcessor;
+    public BlogDataController(KMeansClusteringService kMeansClusteringService) {
+        this.kMeansClusteringService = kMeansClusteringService;
     }
 
     /**
-     * Returns the dataset exactly as loaded by {@link FileProcessor}.
+     * Runs K-means clustering and returns the result as JSON.
      *
-     * @return blog names + vectors
+     * @return clustering result for the blog dataset
      */
-    @GetMapping("/blogdata")
-    public BlogDataToMemory getBlogData() {
-        return fileProcessor.loadData("blogdata.txt");
+    @GetMapping("/clusters")
+    public ClusterResponseDto getBlogData() {
+        return kMeansClusteringService.clusterBlogs(5, 5);
     }
 }

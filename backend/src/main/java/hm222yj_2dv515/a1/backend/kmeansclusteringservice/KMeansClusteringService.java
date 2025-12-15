@@ -1,5 +1,6 @@
 package hm222yj_2dv515.a1.backend.kmeansclusteringservice;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import hm222yj_2dv515.a1.backend.blogdatatomemory.BlogDataToMemory;
@@ -10,11 +11,11 @@ import hm222yj_2dv515.a1.backend.pearsonsimilarity.PearsonSimilarity;
 /**
  * K-means clustering using Pearson similarity.
  */
+@Component
 @Service
 public class KMeansClusteringService {
-
-    private final FileProcessor fileProcessor;
-    private final PearsonSimilarity pearsonSimilarity;
+    FileProcessor fileProcessor;
+    PearsonSimilarity pearsonSimilarity;
 
     public KMeansClusteringService(FileProcessor fileProcessor, PearsonSimilarity pearsonSimilarity) {
         this.fileProcessor = fileProcessor;
@@ -34,7 +35,7 @@ public class KMeansClusteringService {
                 blogData.getBlogNames(),
                 clusterIndexPerBlogIndex);
     }
-    
+
     private int[] runKMeans(double[][] vectors, int numberOfClusters, int numberOfIterations) {
         int numberOfBlogs = vectors.length;
         int numberOfDimensions = vectors[0].length;
