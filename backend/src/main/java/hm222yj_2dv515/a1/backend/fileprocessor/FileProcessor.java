@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import hm222yj_2dv515.a1.backend.blogdatatomemory.BlogDataToMemory;
@@ -14,6 +15,7 @@ import hm222yj_2dv515.a1.backend.blogdatatomemory.BlogDataToMemory;
  * Reads a tab-separated file and returns the numeric columns as a 2D array in
  * for of a BlogDataToMemory-object.
  */
+@Controller
 @Service
 public class FileProcessor {
 
