@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 /**
  * Computes Pearson correlation similarity between two equal-length vectors.
  */
-@Component
 @Service
 public class PearsonSimilarity {
 

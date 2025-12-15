@@ -11,7 +11,6 @@ import hm222yj_2dv515.a1.backend.pearsonsimilarity.PearsonSimilarity;
 /**
  * K-means clustering using Pearson similarity.
  */
-@Component
 @Service
 public class KMeansClusteringService {
     FileProcessor fileProcessor;
