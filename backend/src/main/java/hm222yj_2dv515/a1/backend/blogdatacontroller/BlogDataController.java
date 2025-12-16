@@ -3,6 +3,7 @@ package hm222yj_2dv515.a1.backend.blogdatacontroller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import hm222yj_2dv515.a1.backend.clusterresponsedto.ClusterResponseDto;
@@ -33,7 +34,8 @@ public class BlogDataController {
      * @return clustering result for the blog dataset
      */
     @GetMapping("/clusters")
-    public ClusterResponseDto getBlogData() {
-        return kMeansClusteringService.clusterBlogs(5, 5);
+    public ClusterResponseDto getBlogClusters(@RequestParam(defaultValue = "5") int iterations) {
+
+        return kMeansClusteringService.clusterBlogs(5, iterations);
     }
 }

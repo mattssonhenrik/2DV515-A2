@@ -1,6 +1,5 @@
 package hm222yj_2dv515.a1.backend.pearsonsimilarity;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
